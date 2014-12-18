@@ -1,0 +1,43 @@
+{
+  "name": "gincloud",
+  "description": "The best module ever.",
+  "version": "0.0.0",
+  "homepage": "https://github.com/pikax/gincloud",
+  "bugs": "https://github.com/pikax/gincloud/issues",
+  "license": "MIT",
+  "main": "lib/gincloud.js",
+  "author": {
+    "name": "Carlos Rodrigues",
+    "email": "pikax@live.com.pt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pikax/gincloud"
+  },
+  "keywords": [],
+  "dependencies": {
+    "debug": "2.1.0",
+    "lodash": "2.4.1",
+    "mongoose": "^3.8.21",
+    "q": "1.1.2"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.1",
+    "gulp": "^3.8.8",
+    "gulp-bump": "^0.1.11",
+    "gulp-istanbul": "^0.3.0",
+    "gulp-jscs": "^1.1.2",
+    "gulp-jshint": "^1.8.4",
+    "gulp-load-plugins": "^0.6.0",
+    "gulp-mocha": "^1.1.0",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-plumber": "^0.6.5",
+    "gulp-util": "^3.0.1",
+    "jshint-stylish": "^0.4.0",
+    "should": "^4.0.4"
+  },
+  "scripts": {
+    "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "gulp test"
+  }
+}
