@@ -48,6 +48,8 @@
   export default {
     name: "ginmanga",
 
+    title: 'mangas',
+
     data: () => ({
       selectedManga: '',
 
@@ -90,6 +92,15 @@
 
     },
 
+    head(){
+      return {
+        title: "Manga",
+      }
+    },
+
+    mounted(){
+
+    },
 
     fetch({store}) {
       store.dispatch('getAllMangas');

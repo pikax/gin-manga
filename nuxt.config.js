@@ -10,7 +10,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    titleTemplate: pkg.name + ' %s',
+    titleTemplate: '%s | GinCloud.net',
     meta: [
       {charset: 'utf-8'},
       {

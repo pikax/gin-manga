@@ -8,7 +8,7 @@
         v-list(dense='')
           v-list-tile(v-for='item in items', :key='item.text', @click='onNav(item)')
             v-list-tile-action
-              v-icon {{ item.icon }}
+              v-icon(:color='isCurrentPage(item) && "red"') {{ item.icon }}
             v-list-tile-content
               v-list-tile-title(v-t="item.text")
           v-subheader.mt-3.grey--text.text--darken-1 SUBSCRIPTIONS
@@ -77,7 +77,7 @@
         darkTheme: null,
 
         items: [
-          {icon: 'book', text: "manga", nav: '/ginmanga'},
+          {icon: 'book', text: "manga", nav: '/ginmanga', selected: this.isCurrentPage({nav: '/ginmanga'})},
           {icon: 'eject', text: "Status", nav: '/status'},
           {icon: 'trending_up', text: 'Most Popular'},
           {icon: 'subscriptions', text: 'Subscriptions'},
@@ -134,6 +134,11 @@
 
         this.darkTheme = !this.darkTheme;
         localStorage.setItem('theme', this.darkTheme ? '1' : '0');
+      },
+
+      isCurrentPage({nav}){
+        return this.$route.path.startsWith(nav);
+
       },
 
       onNav({nav}) {
