@@ -47,8 +47,6 @@
   }
 
   .gin-card-title {
-    background: rgba(0, 0, 0, 50);
-
     text-overflow: ellipsis;
     width: 100%;
 

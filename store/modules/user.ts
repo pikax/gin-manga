@@ -22,7 +22,6 @@ const getters = {
 
   isFavorite: state => title => state.favorites.indexOf(title) >= 0,
 
-  mangaError: state => state.infoError,
 };
 
 

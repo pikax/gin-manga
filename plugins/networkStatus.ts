@@ -15,10 +15,6 @@ export default ({store}) => {
     store.dispatch("setOffline");
   }
 
-
-  console.log('network status')
-
-
   window.addEventListener('offline', toggleNetworkStatus(store));
   window.addEventListener('online', toggleNetworkStatus(store));
 };

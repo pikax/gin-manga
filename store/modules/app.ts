@@ -1,11 +1,10 @@
 import {APP} from "~/store/mutations";
 
 
+
 const state = {
-
-
   online: true,
-  dark: false,
+  dark: true,
 };
 
 
@@ -29,7 +28,6 @@ const actions = {
 
   useDarkTheme: ({commit}, value) => {
     commit(APP.USE_DARK_THEME, value);
-
   },
 
 
