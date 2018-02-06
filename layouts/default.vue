@@ -54,20 +54,20 @@
 
 </template>
 <script>
-  import {mapGetters, mapActions} from 'vuex';
+  import {mapActions, mapGetters} from 'vuex';
 
   import GinFooter from "../components/GinFooter";
-  import ThemeButton from "../components/ThemeButton";
 
 
   export default {
     name: "default",
-    components: {ThemeButton, GinFooter},
+    components: {GinFooter},
     data: function () {
       return {
         drawer: false,
         clipped: true,
         fixed: true,
+        darkTheme: false,
         items: [
           {icon: 'book', text: "Mangas", nav: '/ginmanga'},
           {icon: 'eject', text: "Status", nav: '/status'},
@@ -93,7 +93,7 @@
 
 
     computed: {
-      ...mapGetters(["darkTheme"]),
+      ...mapGetters(['appInitializing', 'appInitialized']),
 
       currentTheme() {
         return this.darkTheme
@@ -107,7 +107,10 @@
       ...mapActions(['useDarkTheme']),
 
       toggleTheme() {
-        this.useDarkTheme(!this.darkTheme);
+        // this.useDarkTheme(!this.darkTheme);
+
+        this.darkTheme = !this.darkTheme;
+        localStorage.setItem('theme', this.darkTheme ? '1' : '0');
       },
 
       onNav({nav}) {
@@ -120,10 +123,9 @@
       },
     },
 
-
-    mounted() {
-
-    }
+    beforeMount(){
+      this.darkTheme = localStorage.getItem('theme') === '1';
+    },
 
   }
 </script>

@@ -5,6 +5,7 @@ const nodeExternals = require('webpack-node-externals')
 module.exports = {
   mode: 'universal',
 
+
   /*
   ** Headers of the page
   */
@@ -29,12 +30,12 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: {color: '#3B8070'},
+  loading: {color: '#C0C0C0'},
 
   loadingIndicator: {
-    name: 'rectangle-bounce',
+    name: 'wandering-cubes',
     color: 'white',
-    background: '#188269'
+    background: '#C0C0C0'
   },
 
   /*
@@ -48,6 +49,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/app.ts', ssr: false },
     '@/plugins/vuetify',
     { src: '~/plugins/localStorage.js', ssr: false },
     { src: '~/plugins/networkStatus.ts', ssr: false },
@@ -64,7 +66,9 @@ module.exports = {
 
 
   router: {
-    middleware: ['https']
+    middleware: [
+      'https'
+    ]
   },
 
   /*
@@ -75,7 +79,7 @@ module.exports = {
     name: 'gin-manga',
     description: 'manga website',
 
-    theme_color: '#3B8070'
+    theme_color: '#C0C0C0'
   },
 
 	//
@@ -102,7 +106,11 @@ module.exports = {
           })
         ]
       }
-    }
+
+      // config.resolve.alias['create-api'] = `./create-api-${ctx.isClient ? 'client' : 'server'}.js`
+    },
+
+    vendor: ['firebase']
   },
 
   render: {

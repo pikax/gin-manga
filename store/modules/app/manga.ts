@@ -1,4 +1,4 @@
-import * as api from '~/api/manga';
+import * as api from '~/api/manga/index';
 import {MANGA} from "~/store/mutations"
 
 

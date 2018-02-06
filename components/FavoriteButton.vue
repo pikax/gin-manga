@@ -15,7 +15,6 @@
 
     props: {
       title: {type: String, required: true},
-
     },
 
 

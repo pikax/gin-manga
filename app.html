@@ -8,7 +8,14 @@
   </style>
 </head>
 <body {{ BODY_ATTRS }}>
-<div id="skip"><a href="#app">skip to content</a></div>
-{{ APP }}
+  <div id="skip"><a href="#app">skip to content</a></div>
+  <div id="loading"></div>
+    {{ APP }}
+<script>
+  window.app_initialized = ()=>{
+    document.getElementById("loading").style.display = 'none';
+    // document.getElementById("app").style.display = 'block';
+  }
+</script>
 </body>
 </html>

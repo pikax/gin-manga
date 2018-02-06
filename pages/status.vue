@@ -30,6 +30,11 @@
         online: true
       }
     },
+
+    middleware: [
+      'authenticated'
+    ],
+
     mounted() {
       if (!window.navigator) {
         this.online = false

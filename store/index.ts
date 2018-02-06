@@ -1,7 +1,6 @@
 import Vuex from 'vuex';
-import app from './modules/app';
-import manga from "./modules/manga";
-import user from "./modules/user";
+import app from './modules/app/index';
+import internal from "./modules/app_internal";
 
 
 const createStore = () => {
@@ -9,8 +8,7 @@ const createStore = () => {
 
     modules: {
       app,
-      manga,
-      user,
+      internal,
     }
   })
 };
