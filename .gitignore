@@ -133,3 +133,7 @@ typings/
 .idea/markdown*.xml
 .idea/markdown-navigator/**/*
 .vs
+
+
+
+functions/**/*.js*
