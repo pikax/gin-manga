@@ -8,7 +8,7 @@ const state = {
   online: true,
   dark: false,
 
-  initializing: false,
+  initializing: true,
   loaded: false,
 };
 
@@ -39,7 +39,7 @@ const actions = {
 
 
   initializing: ({commit}) => {
-    commit(APP_INTERNAL.INITIALIZED);
+    commit(APP_INTERNAL.INITIALIZING);
   },
 
   initialized: ({commit}) => {
@@ -68,6 +68,7 @@ const mutations = {
   [APP_INTERNAL.INITIALIZED](state) {
     state.initializing = false;
     state.loaded = true;
+    console.log('loaded')
   },
 };
 

@@ -9,13 +9,15 @@
 </head>
 <body {{ BODY_ATTRS }}>
   <div id="skip"><a href="#app">skip to content</a></div>
-  <div id="loading"></div>
     {{ APP }}
-<script>
-  window.app_initialized = ()=>{
-    document.getElementById("loading").style.display = 'none';
-    // document.getElementById("app").style.display = 'block';
-  }
-</script>
+
+  <script>
+    window.__APP_INITIALIZED = function(){
+      var node = document.createElement('style');
+      node.innerHTML = ".app-container{ position: unset; display: block }";
+      document.body.appendChild(node);
+    }
+
+  </script>
 </body>
 </html>

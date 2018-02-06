@@ -50,9 +50,10 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/app.ts', ssr: false },
-    '@/plugins/vuetify',
     { src: '~/plugins/localStorage.js', ssr: false },
+    '@/plugins/vuetify',
     { src: '~/plugins/networkStatus.ts', ssr: false },
+    { src: '~/plugins/app_finish.ts', ssr: false },
   ],
 
   /*

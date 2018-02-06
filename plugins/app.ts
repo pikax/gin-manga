@@ -1,6 +1,9 @@
 import Cookie from 'cookie'
 
 export default ({store, server, req}) => {
+  store.dispatch('initializing');
+
+
   // const theme = localStorage.getItem('theme') !== '1';
   // const token = localStorage.getItem('token');
 
