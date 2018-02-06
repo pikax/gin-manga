@@ -10,8 +10,7 @@
             v-list-tile-action
               v-icon {{ item.icon }}
             v-list-tile-content
-              v-list-tile-title
-                | {{ item.text }}
+              v-list-tile-title(v-t="item.text")
           v-subheader.mt-3.grey--text.text--darken-1 SUBSCRIPTIONS
           v-list
             v-list-tile(v-for='item in items2', :key='item.text', avatar='', @click='')
@@ -63,6 +62,7 @@
 
   export default {
     name: "default",
+
     components: {WonderingCubes, GinFooter},
 
     fetch({store}) {
@@ -77,7 +77,7 @@
         darkTheme: null,
 
         items: [
-          {icon: 'book', text: "Mangas", nav: '/ginmanga'},
+          {icon: 'book', text: "manga", nav: '/ginmanga'},
           {icon: 'eject', text: "Status", nav: '/status'},
           {icon: 'trending_up', text: 'Most Popular'},
           {icon: 'subscriptions', text: 'Subscriptions'},
@@ -95,7 +95,20 @@
           // { picture: 58, text: 'Nokia' },
           // { picture: 78, text: 'MKBHD' }
 
-        ]
+        ],
+
+
+        i18n:{
+          drawer: {
+            manga: "manga",
+            status: "status",
+          },
+
+          theme: {
+            dark: "theme.dark",
+            light: "theme.light",
+          }
+        }
       }
     },
 
@@ -104,22 +117,12 @@
       ...mapGetters(['appInitializing', 'appInitialized']),
 
       currentTheme() {
-        return this.darkTheme
-          ? "Dark theme"
-          : "Light theme";
+        const k = this.darkTheme
+          ? this.i18n.theme.dark
+          : this.i18n.theme.light;
+
+        return this.$i18n.t(k);
       },
-
-      appContainerClass() {
-        return {
-          'app-container': this.$store.getters.appInitializing,
-        };
-      },
-
-      isThemeDefined() {
-
-        console.log('darktheme: ' + this.darkTheme)
-        return this.darkTheme !== undefined;
-      }
     },
 
 

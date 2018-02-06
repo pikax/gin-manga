@@ -50,6 +50,7 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/app.ts', ssr: false },
+    '@/plugins/i18n.ts',
     { src: '~/plugins/localStorage.js', ssr: false },
     '@/plugins/vuetify',
     { src: '~/plugins/networkStatus.ts', ssr: false },
@@ -111,7 +112,7 @@ module.exports = {
       // config.resolve.alias['create-api'] = `./create-api-${ctx.isClient ? 'client' : 'server'}.js`
     },
 
-    vendor: ['firebase']
+    vendor: ['firebase', 'vue-i18n']
   },
 
   render: {
