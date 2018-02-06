@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
-import colors from 'vuetify/es5/util/colors'
 
 Vue.use(Vuetify, {
   /*theme: {
@@ -12,4 +11,11 @@ Vue.use(Vuetify, {
     error: colors.deepOrange.accent4,
     success: colors.green.accent3
   }*/
+  primary: "#616161",
+  secondary: "#eeeeee",
+  accent: "#9E9E9E",
+  error: "#EF5350",
+  warning: "#FFF176",
+  info: "#00B0FF",
+  success: "#A5D6A7"
 });

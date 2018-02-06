@@ -5,32 +5,45 @@ const state = {
 
 
   online: true,
+  dark: false,
 };
 
 
 // getters
 const getters = {
-  isOnline : state => state.online,
+  isOnline: state => state.online,
+
+
+  darkTheme: state => state.dark,
 };
 
 const actions = {
-  setOffline: ({commit})=>{
+  setOffline: ({commit}) => {
     commit(APP.UPDATE_CONNECTIVITY, false);
   },
 
-  setOnline: ({commit})=>{
+  setOnline: ({commit}) => {
     commit(APP.UPDATE_CONNECTIVITY, true);
   },
 
 
+  useDarkTheme: ({commit}, value) => {
+    commit(APP.USE_DARK_THEME, value);
+
+  },
+
+
 };
 
 
-
-const mutations ={
+const mutations = {
 
   [APP.UPDATE_CONNECTIVITY](state, status) {
     state.online = status;
+  },
+
+  [APP.USE_DARK_THEME](state, value) {
+    state.dark = value;
   }
 };
 

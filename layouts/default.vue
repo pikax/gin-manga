@@ -1,8 +1,6 @@
 <template lang="pug">
 
-  v-app(dark)
-
-
+  v-app(:dark="darkTheme")
 
     //drawer
     v-navigation-drawer(:fixed='fixed', :clipped='clipped', temporary, v-model='drawer', app)
@@ -27,6 +25,12 @@
           v-list-tile-action
             v-icon(color='grey darken-1') settings
           v-list-tile-title.grey--text.text--darken-1 Manage Subscriptions
+        v-list-tile(@click='toggleTheme')
+          v-list-tile-action
+            v-switch(:input-value="darkTheme")
+          v-list-tile-title.grey--text.text--darken-1 {{currentTheme}}
+
+
 
     //content
     v-content
@@ -34,7 +38,7 @@
         nuxt
 
     //toolbar
-    v-toolbar(color='red', dense='', fixed='', clipped-left='', app='')
+    v-toolbar(dense='', fixed='', clipped-left='', app='')
       v-toolbar-title.ml-0.pl-3(style='width: 300px')
         v-toolbar-side-icon(@click.stop='drawer = !drawer')
         v-icon.ml-3 fa-youtube
@@ -50,10 +54,15 @@
 
 </template>
 <script>
-	import GinFooter from "../components/GinFooter";
+  import {mapGetters, mapActions} from 'vuex';
+
+  import GinFooter from "../components/GinFooter";
+  import ThemeButton from "../components/ThemeButton";
+
+
   export default {
-		name: "default",
-    components: {GinFooter},
+    name: "default",
+    components: {ThemeButton, GinFooter},
     data: function () {
       return {
         drawer: false,
@@ -68,7 +77,7 @@
           {icon: 'featured_play_list', text: 'Playlists'},
           {icon: 'watch_later', text: 'Watch Later'},
           {icon: 'refresh', text: 'Refresh user', nav: () => this.$store.dispatch("refreshUser")},
-          {icon: 'refresh', text: 'Refresh manga', nav: ()=>(this).$store.dispatch('getAllMangas')},
+          {icon: 'refresh', text: 'Refresh manga', nav: () => (this).$store.dispatch('getAllMangas')},
 
         ],
         items2: [
@@ -83,7 +92,24 @@
     },
 
 
-    methods:{
+    computed: {
+      ...mapGetters(["darkTheme"]),
+
+      currentTheme() {
+        return this.darkTheme
+          ? "Dark theme"
+          : "Light theme";
+      }
+    },
+
+
+    methods: {
+      ...mapActions(['useDarkTheme']),
+
+      toggleTheme() {
+        this.useDarkTheme(!this.darkTheme);
+      },
+
       onNav({nav}) {
 
         if (typeof nav === 'string') {
@@ -95,11 +121,11 @@
     },
 
 
-    mounted(){
+    mounted() {
 
     }
 
-	}
+  }
 </script>
 
 
@@ -108,7 +134,7 @@
     background-color: rgba(255, 255, 255, 0.32) !important;
   }
 
-  .copy-right{
+  .copy-right {
     margin: 0;
     width: 100%;
     text-align: center;
