@@ -47,7 +47,6 @@
 
   export default {
     name: "ginmanga",
-
     title: 'mangas',
 
     data: () => ({

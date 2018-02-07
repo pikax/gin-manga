@@ -33,8 +33,11 @@ const actions = {
     commit(APP_INTERNAL.UPDATE_CONNECTIVITY, true);
   },
 
-  useDarkTheme: ({commit}, value) => {
-    commit(APP_INTERNAL.USE_DARK_THEME, value);
+  toggleTheme: ({commit, state}) => {
+    const dark = !state.dark;
+    commit(APP_INTERNAL.USE_DARK_THEME, dark );
+
+    localStorage.setItem('theme', dark ? '1' : '0');
   },
 
 

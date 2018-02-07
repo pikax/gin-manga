@@ -38,6 +38,6 @@ export default {
   components: {
     Logo,
     VuetifyLogo
-  }
+  },
 }
 </script>

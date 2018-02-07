@@ -69,7 +69,7 @@ module.exports = {
 
   router: {
     middleware: [
-      'https'
+      // 'https'
     ]
   },
 
@@ -78,8 +78,8 @@ module.exports = {
   */
 
   manifest: {
-    name: 'gin-manga',
-    description: 'manga website',
+    name: 'Gincloud',
+    description: 'Manga website',
 
     theme_color: '#C0C0C0'
   },

@@ -4,7 +4,7 @@ export default ({store, server, req}) => {
   store.dispatch('initializing');
 
 
-  // const theme = localStorage.getItem('theme') !== '1';
+  const theme = localStorage.getItem('theme') === '1';
   // const token = localStorage.getItem('token');
 
 
@@ -24,6 +24,9 @@ export default ({store, server, req}) => {
   // ctx.commit('setToken', token)
 
 
-  // store.dispatch('useDarkTheme', theme);
+  //is dark
+  if(theme) {
+    store.dispatch('toggleTheme', theme);
+  }
 
 };
