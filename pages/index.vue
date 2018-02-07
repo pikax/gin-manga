@@ -1,10 +1,8 @@
 <template>
   <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
+    <v-flex>
 
-      <v-card>
         <gin-image src="/static/images/fc379d41-24f1-44f0-90fe-f2115ae14e7f-u017.jpg"/>
-      </v-card>
 
       <!--<div class="text-xs-center">-->
         <!--<logo/>-->

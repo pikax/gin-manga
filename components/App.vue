@@ -70,14 +70,14 @@
         items: [
           {icon: 'book', text: "manga", nav: '/ginmanga' },
           {icon: 'eject', text: "Status", nav: '/status'},
-          {icon: 'trending_up', text: 'Most Popular'},
+          /*{icon: 'trending_up', text: 'Most Popular'},
           {icon: 'subscriptions', text: 'Subscriptions'},
           {icon: 'history', text: 'History'},
           {icon: 'featured_play_list', text: 'Playlists'},
           {icon: 'watch_later', text: 'Watch Later'},
           {icon: 'refresh', text: 'Refresh user', nav: () => this.$store.dispatch("refreshUser")},
           {icon: 'refresh', text: 'Refresh manga', nav: () => (this).$store.dispatch('getAllMangas')},
-
+*/
         ],
 
         items2: [
