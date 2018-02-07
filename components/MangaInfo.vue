@@ -30,13 +30,16 @@
             td {{props.item.language}}
             td {{props.item.scanlator}}
             td
-              a(:href="props.item.src") batoto
+              //
+                a(:href="props.item.src") batoto
+              a(:href="chapHref(props.item)") reader
 
 
 </template>
 
 <script lang="ts">
-  import {uniq, sortBy} from 'lodash';
+  import {uniq} from 'lodash';
+  import {mapActions} from 'vuex';
 
   const enum Languages {
     English = "English",
@@ -45,8 +48,7 @@
 
 
   export default {
-    components: {
-    },
+    components: {},
     name: "manga-info",
 
 
@@ -73,9 +75,14 @@
 
 
     methods: {
+      ...mapActions(["getMangaChapters"]),
       onImageClick() {
         console.log('opening img');
         // (this as any).$refs.imageDialog.open()
+      },
+
+      chapHref({id}){
+        return '/reader/'+id;
       }
     },
 
@@ -92,8 +99,10 @@
         {text: "Language", value: "language"},
         {text: "Scanlator", value: "scanlator"},
         {text: "Source", value: "src", sortable: false},
-      ]
+      ],
 
+
+      chapters: [],
     }),
 
     props: {
@@ -105,7 +114,7 @@
         type: Array,
       },
       authors: {},
-      chapters: {},
+      // chapters: {},
       genres: {},
       image: {},
       mature: {},
@@ -116,8 +125,27 @@
     },
 
 
+    watch: {
+      title(value, prev) {
+        console.log('title changed from "' + this.title + '" to "' + prev + '"');
+
+        this.getMangaChapters(value).then(chapters => this.chapters = chapters);
+      }
+    },
+
+    mounted() {
+      console.log('mounted with ' + this.title);
+
+      const dddd =this;
+
+      this.getMangaChapters(this.title).then(chapters => {
+        dddd.chapters = chapters;
+      });
+
+    },
     created() {
       console.log(`created with ${(this as any).title}`)
+
     }
 
   }
@@ -126,9 +154,7 @@
 <style lang="scss" scoped>
   $break-small: 620px;
 
-
-
-  .gin-row{
+  .gin-row {
     display: flex;
   }
 
