@@ -13,12 +13,7 @@ module.exports = {
     titleTemplate: '%s | GinCloud.net',
     meta: [
       {charset: 'utf-8'},
-      {
-        property: 'og:image',
-        content: 'https://user-images.githubusercontent.com/904724/26879447-689b56a8-4b91-11e7-968f-5eea1d6c71b4.png'
-      },
-      { property: 'twitter:card', content: 'summary_large_image' },
-      { property: 'twitter:site', content: '@nuxt_js' },
+      {name: "viewport", content: 'width=device-width, initial-scale=1, user-scalable=no'}
     ],
 
     link: [
@@ -49,12 +44,12 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/app.ts', ssr: false },
+    {src: '~/plugins/app.ts', ssr: false},
     '@/plugins/i18n.ts',
-    { src: '~/plugins/localStorage.js', ssr: false },
+    {src: '~/plugins/localStorage.js', ssr: false},
     '@/plugins/vuetify',
-    { src: '~/plugins/networkStatus.ts', ssr: false },
-    { src: '~/plugins/app_finish.ts', ssr: false },
+    {src: '~/plugins/networkStatus.ts', ssr: false},
+    {src: '~/plugins/app_finish.ts', ssr: false},
   ],
 
   /*
@@ -84,7 +79,7 @@ module.exports = {
     theme_color: '#C0C0C0'
   },
 
-	//
+  //
   // workbox:{
   //   importScripts: [
   //     'sw.js'
@@ -118,7 +113,7 @@ module.exports = {
   render: {
     static: {
       maxAge: '1y',
-      setHeaders (res, path) {
+      setHeaders(res, path) {
         if (path.includes('sw.js')) {
           res.setHeader('Cache-Control', 'public, max-age=0')
         }

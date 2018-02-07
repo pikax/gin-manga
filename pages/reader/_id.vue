@@ -15,9 +15,11 @@
     name: "reader_id",
 
 
-    data: () => ({
-      images: []
-    }),
+    data() {
+      return {
+        images: []
+      }
+    },
 
     computed: {
       id() {
@@ -32,7 +34,7 @@
     methods: {
       ...mapActions(['getChapterImages']),
 
-      processImg({name}){
+      processImg({name}) {
         return `/static/images/${this.id}-${name}`;
       }
     },
