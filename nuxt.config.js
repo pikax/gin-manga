@@ -19,7 +19,11 @@ module.exports = {
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
       {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'}
-    ]
+    ],
+
+    // script: [
+    //   {src: 'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'}
+    // ]
   },
 
   /*
@@ -107,7 +111,11 @@ module.exports = {
       // config.resolve.alias['create-api'] = `./create-api-${ctx.isClient ? 'client' : 'server'}.js`
     },
 
-    vendor: ['firebase', 'vue-i18n']
+    babel: {
+      presets: ['env', 'vue-app']
+    },
+
+    vendor: ['firebase', 'vue-i18n', 'lodash', "babel-polyfill"]
   },
 
   render: {

@@ -41,19 +41,26 @@
         v-toolbar-side-icon(@click.stop='toggleDrawer')
         v-icon.ml-3 fa-youtube
       v-layout(row='', align-center='', style='max-width: 650px')
-        v-text-field.white--text(placeholder='Search...', single-line='', append-icon='search', :append-icon-cb='() => {}', hide-details='')
+        v-text-field(:placeholder='$t(this.i18n.search)',
+        single-line='', append-icon='search',
+
+        hide-details,
+        @input="searchManga"
+
+        )
 
 
 
 
     //footer
-    v-footer(app)
+    v-footer( :fixed="false")
       gin-footer
 
 </template>
 
 <script>
   import {mapActions} from 'vuex';
+  import _ from 'lodash';
   import GinFooter from "./GinFooter";
 
   export default {
@@ -67,9 +74,11 @@
         clipped: true,
         fixed: true,
 
+        // search: 'ddd',
+
         items: [
-          {icon: 'book', text: "manga", nav: '/ginmanga' },
-          {icon: 'eject', text: "Status", nav: '/status'},
+          {icon: 'book', text: "manga", nav: '/manga'},
+          {icon: 'eject', text: "status", nav: '/status'},
           /*{icon: 'trending_up', text: 'Most Popular'},
           {icon: 'subscriptions', text: 'Subscriptions'},
           {icon: 'history', text: 'History'},
@@ -80,8 +89,7 @@
 */
         ],
 
-        items2: [
-        ],
+        items2: [],
 
         i18n: {
           drawer: {
@@ -89,6 +97,7 @@
             status: "status",
           },
 
+          search: "search",
           theme: {
             dark: "theme.dark",
             light: "theme.light",
@@ -97,7 +106,7 @@
       };
     },
 
-    computed:{
+    computed: {
       currentTheme() {
         const k = this.dark
           ? this.i18n.theme.dark
@@ -131,18 +140,41 @@
         return this.isCurrentPage(item) && "red" || undefined;
       },
 
-      toggleDrawer(){
+      toggleDrawer() {
         return this.drawer = !this.drawer;
+      },
+
+      searchManga: _.debounce(function(search){
+        // /* debugger
+        // _.debounce(() => this.onSearchManga(search), 200);
+        // const  l = this;
+
+        this.onSearchManga(search)
+
+
+      }, 500),
+
+      onSearchManga(search) {
+        this.$store.dispatch("searchManga", search)
+          .then(x=>{
+            this.$router.push('search');
+          });
       }
     },
 
+    /*
+        watch: {
+          search: _.debounce((val,prev)=>{
+            this.$router.push("/manga#name="+val)
+          })
+        }*/
 
   }
 </script>
 
 <style>
 
-  .selected-link-nav{
+  .selected-link-nav {
     color: red;
   }
 

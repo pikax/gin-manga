@@ -4,17 +4,6 @@ export default ({store, server, req}) => {
   store.dispatch('initializing');
 
 
-  const theme = localStorage.getItem('theme') === '1';
-  // const token = localStorage.getItem('token');
-
-
-  // console.log(`theme: ${theme}`);
-  // console.log(`token: ${token}`);
-
-
-
-
-
 
   const cookieStr = server ? req.headers.cookie : document.cookie;
   const cookies = Cookie.parse(cookieStr || '') || {};
@@ -24,9 +13,12 @@ export default ({store, server, req}) => {
   // ctx.commit('setToken', token)
 
 
+
+  const theme = cookies.theme === '1';
+
+  console.error('theme: '+theme);
+
   //is dark
-  if(theme) {
-    store.dispatch('toggleTheme', theme);
-  }
+  store.dispatch('setTheme', theme);
 
 };

@@ -1,4 +1,5 @@
 import {APP_INTERNAL} from "~/store/mutations";
+import Cookie from 'cookie'
 
 
 // const dark = window && window.localStorage && window.localStorage.getItem('theme');
@@ -35,9 +36,14 @@ const actions = {
 
   toggleTheme: ({commit, state}) => {
     const dark = !state.dark;
-    commit(APP_INTERNAL.USE_DARK_THEME, dark );
+    commit(APP_INTERNAL.USE_DARK_THEME, dark);
 
     localStorage.setItem('theme', dark ? '1' : '0');
+    createCookie("theme", dark ? '1' : '0', 30)
+  },
+
+  setTheme({commit}, dark) {
+    commit(APP_INTERNAL.USE_DARK_THEME, dark);
   },
 
 
@@ -51,6 +57,18 @@ const actions = {
 
 
 };
+
+function createCookie(name, value, days) {
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    var expires = "; expires=" + date.toUTCString();
+  }
+  else {
+    var expires = "";
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
 
 
 const mutations = {

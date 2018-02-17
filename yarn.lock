@@ -870,7 +870,7 @@ babel-polyfill@6.23.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
 
-babel-polyfill@^6.7.2:
+babel-polyfill@^6.26.0, babel-polyfill@^6.7.2:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
   dependencies:
@@ -878,7 +878,7 @@ babel-polyfill@^6.7.2:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-env@^1.6.0:
+babel-preset-env@^1.6.0, babel-preset-env@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.6.1.tgz#a18b564cc9b9afdf4aae57ae3c1b0d99188e6f48"
   dependencies:
@@ -6907,9 +6907,9 @@ vue@^2.5.13:
   version "2.5.13"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.13.tgz#95bd31e20efcf7a7f39239c9aa6787ce8cf578e1"
 
-vuetify@^1.0.0-beta.5:
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.0.0-beta.5.tgz#f90de266858b9343bd0b85d5604f51aebc94f4e3"
+vuetify@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.0.1.tgz#25404ad7ed3de08f7119c6e3fd719ab74f2cfc37"
 
 vuex-persistedstate@^2.4.2:
   version "2.4.2"

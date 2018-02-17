@@ -1,6 +1,7 @@
-import Cookie from 'cookie'
+import Cookie from 'cookie';
 
-export default ({store, server, req}) => {
+export default ({store, isServer, req}) => {
+
 
   store.dispatch('initialized');
   if((window as any).__APP_INITIALIZED){

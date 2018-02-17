@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-flex(xs12, py-3, text-xs-center, white--text) &copy; 2018
+  v-flex(xs12, text-xs-center) &copy; 2018
     v-flex(v-if="!isOnline") offline
 
 </template>

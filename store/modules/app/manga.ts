@@ -8,7 +8,12 @@ const state = {
   info: [],
 
   chapters: [],
-  images:[],
+  images: [],
+
+
+  searching: false,
+  searchMangas: [],
+
 
   infoError: '',
 };
@@ -22,10 +27,12 @@ const getters = {
   },
 
   getChaptersByTitle: (state, getters) => title => {
-    const chap =  state.chapters.find(x => x.title === title);
+    const chap = state.chapters.find(x => x.title === title);
     return chap && chap.chapters || null;
   },
 
+
+  searched: (state) => state.searchMangas,
   mangaError: state => state.infoError,
 };
 
@@ -52,12 +59,23 @@ const actions = {
       }).catch(error => commit(MANGA.REQUEST_CHAPTERS_ERROR, {error}))
   },
 
-  getChapterImages({commit}, {title, chapterId}){
+  getChapterImages({commit}, {title, chapterId}) {
     return api.getChapter(title, chapterId)
       .then(chapter => {
         commit(MANGA.RECEIVED_CHAPTER_IMAGES, {chapter, title});
         return chapter;
       }).catch(error => commit(MANGA.REQUEST_CHAPTER_IMAGES_ERROR, {error}))
+  },
+
+
+  searchManga({commit}, title) {
+    commit(MANGA.REQUEST_MANGA_SEARCH);
+    return api.filterMangas(title)
+      .then(mangas => {
+        commit(MANGA.RECEIVED_MANGA_SEARCH, {mangas});
+        return mangas;
+      })
+      .catch(error => commit(MANGA.REQUEST_MANGA_SEARCH, {error}))
   }
 };
 
@@ -79,18 +97,30 @@ const mutations = {
     state.infoError = error.toString();
   },
 
-  [MANGA.RECEIVED_CHAPTERS](state, {chapters, title}){
+  [MANGA.RECEIVED_CHAPTERS](state, {chapters, title}) {
     state.chapters.push({title, chapters});
   },
-  [MANGA.REQUEST_CHAPTERS_ERROR](state, {error}){
+  [MANGA.REQUEST_CHAPTERS_ERROR](state, {error}) {
     state.infoError = error;
   },
-  [MANGA.RECEIVED_CHAPTER_IMAGES](state, {chapter, title}){
+  [MANGA.RECEIVED_CHAPTER_IMAGES](state, {chapter, title}) {
     state.images.push({title, chapter});
   },
-  [MANGA.REQUEST_CHAPTER_IMAGES_ERROR](state, {error}){
+  [MANGA.REQUEST_CHAPTER_IMAGES_ERROR](state, {error}) {
     state.infoError = error;
-  }
+  },
+
+  [MANGA.REQUEST_MANGA_SEARCH](state) {
+    state.searching = true;
+  },
+  [MANGA.RECEIVED_MANGA_SEARCH](state, {mangas}) {
+    state.searchMangas = mangas;
+    state.searching = false;
+  },
+  [MANGA.FAILED_MANGA_SEARCH](state, {error}) {
+    state.infoError = error;
+    state.searching = false;
+  },
 };
 
 export default {

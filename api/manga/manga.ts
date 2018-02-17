@@ -5,6 +5,10 @@ export function getAllMangas() {
 }
 
 
+export function filterMangas(title: string){
+  return Promise.resolve(all.filter(x=>x.title.indexOf(title)>=0));
+}
+
 export function getInfo(title: string) {
   return axios.get("/static/info/" + title + '.json')
     .then(x => x.data);

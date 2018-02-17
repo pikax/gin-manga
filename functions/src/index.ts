@@ -6,6 +6,21 @@ const db = admin.firestore();
 
 
 
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  // storageBucket: "gin-manga.appspot.com",
+  // databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+  projectId: 'gin-manga'
+});
+
+
+
+const firestore = admin.firestore();
+
+
+const mangahere = firestore.collection('manga_here');
+
+
 
 
 
