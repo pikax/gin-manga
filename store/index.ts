@@ -4,6 +4,7 @@ import internal from "./modules/app_internal";
 
 
 const createStore = () => {
+  // console.log('creating store');
   return new Vuex.Store({
 
     state:{

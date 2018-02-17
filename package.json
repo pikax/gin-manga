@@ -8,7 +8,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "firebase deploy --only hosting"
+    "deploy": "firebase deploy --only hosting",
+    "unit": "jest --config test/unit/jest.conf.js",
+    "coverage":"yarn unit --coverage"
   },
   "dependencies": {
     "@nuxtjs/component-cache": "^1.1.1",
@@ -25,6 +27,7 @@
     "vuex-persistedstate": "^2.4.2"
   },
   "devDependencies": {
+    "@types/jest": "^22.1.3",
     "@types/js-cookie": "^2.1.0",
     "@types/jwt-decode": "^2.2.1",
     "@types/lodash": "^4.14.104",
@@ -32,14 +35,23 @@
     "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.3",
     "firebase": "^4.10.0",
+    "jest": "^22.3.0",
     "js-yaml": "^3.10.0",
     "node-sass": "^4.7.2",
     "pug": "^2.0.0-rc.4",
     "sass-loader": "^6.0.6",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "ts-jest": "^22.0.4",
     "ts-loader": "^3.5.0",
-    "typescript": "^2.7.2"
+    "typescript": "^2.7.2",
+    "@vue/test-utils": "^1.0.0-beta.11",
+    "vue-jest": "^2.1.0",
+    "jest-serializer-vue": "^0.3.0",
+    "vue-server-renderer": "^2.5.13",
+    "vue-template-compiler": "^2.5.13",
+    "jest-vue-preprocessor": "^1.3.1",
+    "babel-jest": "^22.2.2"
   },
   "optionalDependencies": {
     "s3-deploy": "^0.9.0"
