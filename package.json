@@ -8,7 +8,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": ""
+    "deploy": "firebase deploy --only hosting"
   },
   "dependencies": {
     "@nuxtjs/component-cache": "^1.1.1",
