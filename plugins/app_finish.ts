@@ -1,6 +1,6 @@
 import Cookie from 'cookie';
 
-export default ({store, isServer, req}) => {
+export default ({store, req}) => {
 
 
   store.dispatch('initialized');
